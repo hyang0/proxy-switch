@@ -1,0 +1,44 @@
+# Build outputs
+/bin/
+/obj/
+/out/
+
+# VS and tooling
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Test results
+TestResults/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# Coverage
+coverage/
+*.opencover.xml
+*.lcov
+
+# Publish
+/publish/
+
+# Others
+*.cache
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Local settings
+appsettings.*.json
