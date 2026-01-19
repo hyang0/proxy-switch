@@ -2,6 +2,20 @@
 
 一个轻量的 WinForms 托盘应用，使用全局快捷键一键开启/关闭系统代理，并在托盘与气泡中提示当前状态。支持通过配置文件自定义快捷键。
 
+## 截图
+
+禁用代理时的截图（F7 切换）：
+
+![](screenshot/screenshot1.png)
+
+启用代理时的截图（F7 切换）：
+
+![](screenshot/screenshot2.png)
+
+对应的系统功能：
+
+![](screenshot/screenshot3.png)
+
 ## 功能
 - F7 切换系统代理开启/关闭（可配置）
 - F8 退出程序（可配置）
