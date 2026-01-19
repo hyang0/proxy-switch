@@ -38,7 +38,7 @@ dotnet run
 - 托盘右键菜单可退出
 
 ## 快捷键配置
-配置文件：[appsettings.json](file:///d:/gitRepo/shortcut/appsettings.json)
+配置文件：[appsettings.json](file:./appsettings.json)
 ```json
 {
   "Hotkeys": {
@@ -56,6 +56,45 @@ dotnet run
 - 解析失败将回退到默认：Toggle=F7，Exit=F8
 
 配置加载与解析逻辑参考：[Program.cs](file:///d:/gitRepo/shortcut/Program.cs) 中的 `HotkeyConfigLoader`。
+
+## 自包含发布与安装包
+
+### 生成自包含发布目录
+
+在仓库根目录执行：
+
+```bash
+dotnet publish -c Release
+```
+
+默认会生成自包含的 win-x64 发布目录：
+
+```text
+bin\Release\net10.0-windows\win-x64\publish\
+```
+
+该目录中的 `shortcut.exe` 可以在未安装 .NET 运行时的 Windows 上直接运行。
+
+### 使用 Inno Setup 生成安装包
+
+项目内已提供 Inno Setup 脚本：[installer/shortcut.iss](file:///d:/gitRepo/shortcut/installer/shortcut.iss)
+
+使用步骤：
+
+1. 先执行 `dotnet publish -c Release`，确保 `publish` 目录存在并为最新
+2. 安装 Inno Setup（官方安装包）
+3. 在 Inno Setup 中打开 `installer/shortcut.iss`
+4. 直接编译脚本，生成安装程序 `ShortcutProxySwitcherSetup.exe`
+
+安装程序特性：
+- 默认安装到 `C:\Program Files\ShortcutProxySwitcher`
+- 在开始菜单创建“Shortcut Proxy Switcher”快捷方式
+- 可选任务：“在桌面创建快捷方式”
+- 安装完成后可勾选“安装完成后立即运行”
+
+安装完成后，用户可以：
+- 从开始菜单启动程序
+- 如勾选了桌面快捷方式任务，则直接双击桌面图标启动
 
 ## 工作原理
 - 通过 `RegisterHotKey` 注册系统级热键（F7/F8 默认）

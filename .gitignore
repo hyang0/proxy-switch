@@ -40,5 +40,5 @@ coverage/
 .DS_Store
 Thumbs.db
 
-# Local settings
-appsettings.*.json
+
+installer/Output/
